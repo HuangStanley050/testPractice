@@ -7,7 +7,13 @@ class App extends Component {
     counter: 0,
     isError: false
   }
-  handleClick = () => this.setState({ counter: this.state.counter + 1 });
+  handleClick = () => {
+    if (this.state.isError) {
+      this.setState({ isError: !this.state.isError });
+    }
+    this.setState({ counter: this.state.counter + 1 });
+
+  }
   handleDecrement = () => {
     if (this.state.counter - 1 < 0) {
       this.setState({ counter: 0, isError: true });

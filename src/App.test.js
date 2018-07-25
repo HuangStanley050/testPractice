@@ -128,5 +128,15 @@ describe("Testing for App component", () => {
     expect(counterDisplay.text()).toContain("error");
   });
 
+  it("should clear the error when the increment-button is pressed", () => {
+    const error = true;
+    const wrapper = setup(null, { isError: error });
+    const button = findByTestAttr(wrapper, "increment-button");
+    button.simulate("click");
+    wrapper.update();
+    const counterDisplay = findByTestAttr(wrapper, "error-display");
+    expect(counterDisplay.text()).toBe("");
+  });
+
 
 });
